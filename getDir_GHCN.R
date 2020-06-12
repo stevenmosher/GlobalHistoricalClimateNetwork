@@ -11,5 +11,8 @@ getDir_GHCN<- function(directory=getwd()){
   }else{
     dirs<-dirs[ghcndir]
   }
+  dirs<-tbl_df(data.frame(Directory=dirs,stringsAsFactors = F))
+  dirs<-dirs %>% mutate(Date=dirdate_GHCN(Directory))
+  
   return(dirs)
 }
